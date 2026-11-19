@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗОНА — Официальный сайт сериала | Yaroshenko Cinema Group</title>
+    <!-- Подключение Tailwind CSS для адаптивного современного дизайна -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Шрифты Inter и Oswald для кинематографичных заголовков -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        cinema: {
+                            bg: '#090a0c',
+                            card: '#121418',
+                            border: '#1f232b',
+                            accent: '#f59e0b',
+                            accentHover: '#d97706',
+                            danger: '#ef4444'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Кастомные стили для атмосферы кинотеатра и индустриальной эстетики */
+        body {
+            background-color: #090a0c;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Декоративная сетка на фоне */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* Предупреждающая индустриальная полоса */
+        .hazard-border {
+            background: repeating-linear-gradient(
+                -45deg,
+                #f59e0b,
+                #f59e0b 10px,
+                #121418 10px,
+                #121418 20px
+            );
+        }
+
+        /* Плавная анимация появления карточек */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-cinema-bg bg-grid-pattern min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+
+    <!-- Верхняя навигационная панель -->
+    <header class="sticky top-0 z-40 bg-cinema-bg/90 backdrop-blur-md border-b border-cinema-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                <span class="font-display tracking-wider text-sm sm:text-base uppercase text-gray-300">
+                    Yaroshenko <span class="text-amber-500 font-bold">Cinema Group</span>
+                </span>
+            </div>
+            <nav class="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-amber-400 transition-colors">О сериале</a>
+                <a href="#episodes" class="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-3.5 py-1.5 rounded-lg transition-all shadow-lg shadow-amber-500/20">
+                    Смотреть серии
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ГЛАВНЫЙ БЛОК: ПОСТЕР 16:9 И ОПИСАНИЕ -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-12">
+            <!-- Бейдж студии -->
+            <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-500">
+                <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30">Оригинальный веб-сериал</span>
+                <span class="text-gray-500">•</span>
+                <span class="text-gray-400">1 сезон + Новые серии 2 сезона</span>
+            </div>
+
+            <!-- Контейнер главного постера 16:9 (poster1.jpg) -->
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-cinema-card border border-cinema-border shadow-2xl group">
+                <img 
+                    id="poster1-img"
+                    src="poster1.jpg" 
+                    alt="Постер сериала Зона" 
+                    class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                    onerror="handleImageFallback(this, 'poster1-fallback')"
+                >
+                
+                <!-- Заглушка, если файл poster1.jpg еще не добавлен в папку -->
+                <div id="poster1-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-neutral-900 via-stone-900 to-black">
+                    <div class="w-16 h-16 mb-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <p class="font-display text-2xl sm:text-4xl uppercase tracking-wider text-white mb-2">ЗОНА — Главный постер</p>
+                    <p class="text-xs sm:text-sm text-gray-400 max-w-md">
+                        Положи файл <code class="text-amber-400 bg-black/60 px-1.5 py-0.5 rounded">poster1.jpg</code> (формат 16:9) в одну папку с <code class="text-gray-300">index.html</code>, и он автоматически появится здесь.
+                    </p>
+                </div>
+
+                <!-- Градиентная виньетка поверх нижней части постера -->
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-cinema-bg via-cinema-bg/20 to-transparent"></div>
+                
+                <!-- Заголовок поверх постера на больших экранах -->
+                <div class="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 right-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div>
+                        <h1 class="font-display text-5xl sm:text-7xl font-bold uppercase tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                            ЗОНА
+                        </h1>
+                        <p class="text-xs sm:text-sm text-amber-400 font-medium tracking-wide uppercase mt-1">
+                            Территория, где правила придумывают на ходу
+                        </p>
+                    </div>
+                    <a href="#episodes" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all shadow-xl shadow-black/60 active:scale-95 w-fit">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <span>Смотреть 1 и 2 сезон</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Блок описания сериала -->
+            <div id="about" class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6 bg-cinema-card/90 border border-cinema-border rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="h-6 w-1 bg-amber-500 rounded-full"></span>
+                        <h2 class="font-display text-2xl sm:text-3xl uppercase tracking-wide text-white">О проекте</h2>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        Добро пожаловать в <strong class="text-white">«Зону»</strong> — место, где любая гениальная идея за пять минут превращается в полный хаос, а выход из самой безвыходной ситуации находится самым абсурдным способом. Когда ставки растут, старые договорённости рушатся, а вокруг появляются новые игроки, главным героям остаётся рассчитывать только на смекалку, верность слову и стальной характер.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        Драйвовые разборки, неожиданные повороты сюжета, фирменный юмор и суровая атмосфера в каждом эпизоде. Первый сезон полностью доступен к просмотру, а во втором сезоне градус безумия и экшена выходит на совершенно новый уровень!
+                    </p>
+                </div>
+
+                <!-- Карточка характеристик сериала -->
+                <div class="bg-cinema-bg/80 border border-cinema-border rounded-xl p-5 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between border-b border-cinema-border pb-2">
+                            <span class="text-gray-500">Жанр:</span>
+                            <span class="text-gray-200 font-medium text-right">Комедийный боевик, Криминал</span>
+                        </div>
+                        <div class="flex justify-between border-b border-cinema-border pb-2">
+                            <span class="text-gray-500">Студия:</span>
+                            <span class="text-amber-400 font-semibold text-right">Yaroshenko Cinema Group</span>
+                        </div>
+                        <div class="flex justify-between border-b border-cinema-border pb-2">
+                            <span class="text-gray-500">Статус:</span>
+                            <span class="text-emerald-400 font-medium text-right">Выходит 2 сезон</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Хронометраж:</span>
+                            <span class="text-gray-200 font-medium text-right">~8–10 мин / серия</span>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="h-1.5 w-full rounded-full hazard-border opacity-75"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВТОРОЙ ВИЗУАЛЬНЫЙ БЛОК: КАДР ИЗ СЕРИАЛА (poster2.jpg) -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-14">
+            <div class="bg-cinema-card border border-cinema-border rounded-2xl overflow-hidden shadow-xl">
+                <div class="relative w-full aspect-video sm:aspect-[21/9] bg-black overflow-hidden">
+                    <img 
+                        id="poster2-img"
+                        src="poster2.jpg" 
+                        alt="Кадр из сериала Зона" 
+                        class="w-full h-full object-cover object-center"
+                        onerror="handleImageFallback(this, 'poster2-fallback')"
+                    >
+                    <!-- Заглушка, если файл poster2.jpg еще не добавлен -->
+                    <div id="poster2-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-r from-neutral-900 via-zinc-900 to-neutral-950">
+                        <p class="font-display text-xl sm:text-2xl uppercase tracking-wider text-amber-500 mb-1">Кадр из сериала</p>
+                        <p class="text-xs sm:text-sm text-gray-400">
+                            Здесь отобразится файл <code class="text-amber-400 bg-black/60 px-1.5 py-0.5 rounded">poster2.jpg</code> после загрузки в папку проекта.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-cinema-card border-t border-cinema-border flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <p class="text-xs sm:text-sm italic text-gray-300">
+                        «В Зоне не спрашивают, как ты сюда попал. Здесь важно только то, как ты отсюда выберешься.»
+                    </p>
+                    <span class="text-xs font-mono uppercase tracking-wider text-gray-500 shrink-0">Кадр со съёмок • ЗОНА</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛ СЕРИЙ И ВСТРОЕННЫЙ КИНОПЛЕЕР -->
+        <section id="episodes" class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+            <!-- Заголовок секции и переключатель сезонов -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-4xl uppercase tracking-wide text-white">Серии</h2>
+                    <p class="text-sm text-gray-400 mt-1">Выбери сезон и нажми на серию для запуска просмотра</p>
+                </div>
+
+                <!-- Вкладки 1 сезон / 2 сезон -->
+                <div class="inline-flex p-1.5 rounded-xl bg-cinema-card border border-cinema-border self-start sm:self-auto" role="tablist">
+                    <button 
+                        id="tab-season-1" 
+                        onclick="switchSeason(1)" 
+                        class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all bg-amber-500 text-black shadow-md"
+                        role="tab"
+                        aria-selected="true"
+                    >
+                        1 сезон
+                    </button>
+                    <button 
+                        id="tab-season-2" 
+                        onclick="switchSeason(2)" 
+                        class="px-5 py-2.5 rounded-lg text-sm font-bold transition-all text-gray-400 hover:text-white flex items-center gap-2"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        <span>2 сезон</span>
+                        <span class="px-1.5 py-0.5 text-[10px] uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded">New</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Встроенный видеоплеер -->
+            <div id="player-wrapper" class="mb-8 bg-cinema-card border border-cinema-border rounded-2xl overflow-hidden shadow-2xl">
+                <div class="px-4 sm:px-6 py-3.5 bg-black/60 border-b border-cinema-border flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                        <span id="now-playing-badge" class="text-xs font-bold uppercase tracking-wider text-amber-500">1 сезон • Серия 1</span>
+                        <span class="text-gray-600">|</span>
+                        <h3 id="now-playing-title" class="text-sm sm:text-base font-semibold text-white">Пролог</h3>
+                    </div>
+                    <span id="now-playing-file" class="text-xs font-mono text-gray-500">Файл: s1s1prologue.mp4</span>
+                </div>
+
+                <div class="relative w-full aspect-video bg-black flex items-center justify-center">
+                    <video 
+                        id="main-video-player" 
+                        class="w-full h-full object-contain" 
+                        controls 
+                        playsinline
+                        preload="metadata"
+                        poster="poster1.jpg"
+                    >
+                        <source id="video-source" src="s1s1prologue.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает воспроизведение видео.
+                    </video>
+
+                    <!-- Сообщение, если конкретный .mp4 файл еще не загружен в папку -->
+                    <div id="video-error-overlay" class="hidden absolute inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-500 mb-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <p class="font-display text-xl sm:text-2xl uppercase text-white mb-1">Видеофайл пока не найден</p>
+                        <p class="text-xs sm:text-sm text-gray-400 max-w-md">
+                            Чтобы эта серия воспроизводилась, добавь файл <code id="missing-file-name" class="text-amber-400 bg-neutral-900 px-1.5 py-0.5 rounded">s1s1prologue.mp4</code> в ту же папку, где лежит <code class="text-gray-300">index.html</code>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сетка карточек серий (динамически заполняется через JS) -->
+            <div id="episodes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Карточки серий рендерятся скриптом -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="border-t border-cinema-border bg-cinema-card/60 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-gray-500">
+            <div class="flex items-center gap-2">
+                <span class="font-display uppercase tracking-wider text-gray-300">ЗОНА</span>
+                <span>•</span>
+                <span>© 2026 Yaroshenko Cinema Group</span>
+            </div>
+            <p class="text-center sm:text-right text-gray-500">
+                Все файлы (<code class="text-gray-400">index.html</code>, <code class="text-gray-400">poster1.jpg</code>, <code class="text-gray-400">poster2.jpg</code> и <code class="text-gray-400">.mp4</code>) должны лежать в корне одной папки при загрузке на Netlify.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Логика переключения сезонов и запуска серий -->
+    <script>
+        // База данных всех серий с точными именами файлов и названиями
+        const seriesData = {
+            1: [
+                { num: 1, title: "Пролог", file: "s1s1prologue.mp4", duration: "1 сезон" },
+                { num: 2, title: "Повторение-мать учение", file: "s1s2povtorenie.mp4", duration: "1 сезон" },
+                { num: 3, title: "Неожиданные обстоятельства", file: "s1s3neojidano.mp4", duration: "1 сезон" },
+                { num: 4, title: "Новое начало", file: "s1s4start.mp4", duration: "1 сезон" },
+                { num: 5, title: "Последствия", file: "s1s5posled.mp4", duration: "1 сезон" },
+                { num: 6, title: "Последствия-продолжение", file: "s1s6prodoljen.mp4", duration: "1 сезон" },
+                { num: 7, title: "Странные дела", file: "s1s7stranie.mp4", duration: "1 сезон" },
+                { num: 8, title: "1 сезон-Конец", file: "s1s8konec.mp4", duration: "Финал 1 сезона" }
+            ],
+            2: [
+                { num: 1, title: "2 Сезон-пролог", file: "s2s1prologue.mp4", duration: "~8–10 мин" },
+                { num: 2, title: "Первые проблемы", file: "s2s2pervie.mp4", duration: "~8–10 мин" },
+                { num: 3, title: "Чеченцы-спасение", file: "s2s3spasenie.mp4", duration: "~8–10 мин" }
+            ]
+        };
+
+        let currentSeason = 1;
+        let activeFile = "s1s1prologue.mp4";
+
+        // Обработка отсутствующих локальных картинок (poster1.jpg / poster2.jpg)
+        function handleImageFallback(imgElement, fallbackId) {
+            imgElement.classList.add('hidden');
+            const fallbackEl = document.getElementById(fallbackId);
+            if (fallbackEl) {
+                fallbackEl.classList.remove('hidden');
+            }
+        }
+
+        // Переключение между вкладками "1 сезон" и "2 сезон"
+        function switchSeason(seasonNumber) {
+            currentSeason = seasonNumber;
+
+            const tab1 = document.getElementById('tab-season-1');
+            const tab2 = document.getElementById('tab-season-2');
+
+            if (seasonNumber === 1) {
+                tab1.className = "px-5 py-2.5 rounded-lg text-sm font-bold transition-all bg-amber-500 text-black shadow-md";
+                tab1.setAttribute('aria-selected', 'true');
+                tab2.className = "px-5 py-2.5 rounded-lg text-sm font-bold transition-all text-gray-400 hover:text-white flex items-center gap-2";
+                tab2.setAttribute('aria-selected', 'false');
+            } else {
+                tab2.className = "px-5 py-2.5 rounded-lg text-sm font-bold transition-all bg-amber-500 text-black shadow-md flex items-center gap-2";
+                tab2.setAttribute('aria-selected', 'true');
+                tab1.className = "px-5 py-2.5 rounded-lg text-sm font-bold transition-all text-gray-400 hover:text-white";
+                tab1.setAttribute('aria-selected', 'false');
+            }
+
+            renderEpisodes();
+        }
+
+        // Отрисовка списка серий выбранного сезона
+        function renderEpisodes() {
+            const grid = document.getElementById('episodes-grid');
+            const episodes = seriesData[currentSeason] || [];
+
+            grid.innerHTML = episodes.map(ep => {
+                const isPlaying = ep.file === activeFile;
+                return `
+                    <button 
+                        onclick="playEpisode(${currentSeason}, ${ep.num})"
+                        class="animate-fade-in text-left group relative flex flex-col justify-between p-5 rounded-2xl border transition-all duration-200 ${
+                            isPlaying 
+                            ? 'bg-amber-500/10 border-amber-500 shadow-lg shadow-amber-500/10' 
+                            : 'bg-cinema-card border-cinema-border hover:border-amber-500/50 hover:bg-neutral-900'
+                        }"
+                    >
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
+                                    isPlaying 
+                                    ? 'bg-amber-500 text-black' 
+                                    : 'bg-neutral-800 text-gray-300 group-hover:bg-amber-500/20 group-hover:text-amber-400'
+                                }">
+                                    Серия ${ep.num}
+                                </span>
+                                <span class="text-xs text-gray-500 font-medium">${ep.duration}</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-white group-hover:text-amber-400 transition-colors leading-snug">
+                                ${ep.title}
+                            </h4>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-cinema-border/80 flex items-center justify-between text-xs">
+                            <span class="font-mono text-gray-500 truncate max-w-[165px]">${ep.file}</span>
+                            <span class="inline-flex items-center gap-1 font-semibold ${isPlaying ? 'text-amber-400' : 'text-gray-400 group-hover:text-white'}">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                ${isPlaying ? 'Выбрано' : 'Смотреть'}
+                            </span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Запуск выбранной серии в плеере
+        function playEpisode(season, episodeNum) {
+            const episode = seriesData[season].find(e => e.num === episodeNum);
+            if (!episode) return;
+
+            activeFile = episode.file;
+
+            // Обновляем заголовки над плеером
+            document.getElementById('now-playing-badge').textContent = `${season} сезон • Серия ${episode.num}`;
+            document.getElementById('now-playing-title').textContent = episode.title;
+            document.getElementById('now-playing-file').textContent = `Файл: ${episode.file}`;
+            document.getElementById('missing-file-name').textContent = episode.file;
+
+            // Скрываем сообщение об ошибке перед попыткой загрузки нового файла
+            const errorOverlay = document.getElementById('video-error-overlay');
+            errorOverlay.classList.add('hidden');
+
+            // Меняем источник видео
+            const videoPlayer = document.getElementById('main-video-player');
+            const videoSource = document.getElementById('video-source');
+            
+            videoSource.src = episode.file;
+            videoPlayer.load();
+            
+            // Пытаемся запустить воспроизведение
+            const playPromise = videoPlayer.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Автозапуск может быть заблокирован браузером или файл отсутствует
+                });
+            }
+
+            // Плавная прокрутка к плееру, чтобы было удобно на телефоне
+            document.getElementById('player-wrapper').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Обновляем подсветку активной карточки
+            renderEpisodes();
+        }
+
+        // Отслеживание ошибки загрузки видеофайла (если файл еще не положен в папку)
+        window.addEventListener('DOMContentLoaded', () => {
+            const videoPlayer = document.getElementById('main-video-player');
+            const videoSource = document.getElementById('video-source');
+            const errorOverlay = document.getElementById('video-error-overlay');
+
+            videoSource.addEventListener('error', () => {
+                errorOverlay.classList.remove('hidden');
+            });
+
+            videoPlayer.addEventListener('error', () => {
+                errorOverlay.classList.remove('hidden');
+            });
+
+            // Первичная отрисовка 1 сезона
+            renderEpisodes();
+        });
+    </script>
+</body>
+</html>
